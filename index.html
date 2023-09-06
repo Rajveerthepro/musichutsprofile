@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <title style="font-family: 'Comfortaa', cursive;">
+        Music Hut's Profile
+    </title>
+    <link rel="stylesheet" href="https://my.unogreen.in/new_assests/assets/style.css" />
+    <link rel="icon" href="https://i.ibb.co/Xk9zxkB/Screenshot-112-removebg-preview.png" type="image/gif"
+        sizes="16x16">
+    <script src="https://my.unogreen.in/new_assests/assets/script.js"></script>
+</head>
+<style>
+    ion-content::part(background) {
+        transition: background 2.5s ease-in-out;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;500&display=swap");
+
+    h1 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    h2 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    h3 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    h4 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    h5 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    h6 {
+        font-family: "Nunito", sans-serif;
+    }
+
+    p {
+        font-family: "Nunito", sans-serif;
+    }
+
+    /* 
+body {
+  width: 100%;
+  vertical-align: top;
+  animation: changeBg 10s linear infinite;
+  display: grid;
+} */
+
+    /* --background: linear-gradient(-45deg,#828a8a,#435770,#c5d6e0,#dadde6,#807e81,#bfc1bc,#43646b,#9fcbcc); */
+
+    .body {
+        color: #fff;
+        width: 100%;
+        animation: changeBg 10s ease infinite;
+        /* transition: background 2s; */
+        position: absolute;
+    }
+
+    @keyframes changeBg {
+        0% {
+            --background: #828a8a;
+        }
+
+        20% {
+            --background: #435770;
+        }
+
+        40% {
+            --background: #c5d6e0;
+        }
+
+        60% {
+            --background: #dadde6;
+        }
+
+        80% {
+            --background: #807e81;
+        }
+
+        100% {
+            --background: #bfc1bc;
+        }
+    }
+
+    /* @keyframes changeBg {
+  from {--background-color: red;}
+  to {--background-color: blue;}
+} */
+
+    ion-card {
+        --background: transparent;
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.09);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9.1px);
+        -webkit-backdrop-filter: blur(9.1px);
+        border: 1px solid rgba(255, 255, 255, 0.51);
+        padding-bottom: 15px;
+    }
+
+    .menuicon {
+        --background: transparent;
+        border: 1px solid #000;
+        color: #000;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 0 0 0 0;
+        text-align: left;
+    }
+
+    .shareicon {
+        --background: transparent;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 0 0 0 0;
+        text-align: right;
+    }
+
+    .profileimg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 11em;
+        height: 11em;
+        border: 2px solid #000;
+        border-radius: 50%;
+    }
+
+    .bannerimg {
+        /*display: flex;*/
+        height: 200px;
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: -25px;
+    }
+
+    #name {
+        text-align: center;
+        /* padding-bottom: 2px; */
+        padding-top: 0.5em;
+    }
+
+    #designation {
+        text-align: center;
+        color: #000;
+    }
+
+    .company {
+        text-align: center;
+        color: #000;
+    }
+
+    .downloadcontact {
+        text-align: center;
+        color: #000;
+        border: 2px solid #000;
+        border-radius: 10px;
+        --background: transparent;
+        text-align: center;
+        margin: 0 40px 0 40px;
+        padding: 5px 2px 5px 2px;
+    }
+
+    .icon {
+        height: 35px;
+    }
+
+    .social {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .ProfileIcons {
+        text-align: center;
+        /* font-size: 100px; */
+    }
+
+    .personal {
+        text-align: center;
+    }
+
+    /* About Modal */
+    .about {
+        --height: 60%;
+        --border-radius: 16px;
+        --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .about::part(backdrop) {
+        background: rgba(209, 213, 219);
+        opacity: 1;
+
+    }
+
+    .about ion-toolbar {
+        --background: rgb(14 116 144);
+        --color: white;
+    }
+
+
+    /* Payment Modal */
+    .payment {
+        --height: 60%;
+        --border-radius: 16px;
+        --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .payment::part(backdrop) {
+        background: rgba(209, 213, 219);
+        opacity: 1;
+    }
+
+    .payment ion-toolbar {
+        --background: rgb(14 116 144);
+        --color: white;
+    }
+
+
+    /* Menu Modal */
+    .menu {
+        --height: 40%;
+        --border-radius: 16px;
+        --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .menu::part(backdrop) {
+        background: rgba(209, 213, 219);
+        opacity: 1;
+    }
+
+    .menu ion-toolbar {
+        --background: rgb(14 116 144);
+        --color: white;
+    }
+
+    /* gallery Modal */
+    .gallery {
+        --height: 60%;
+        --border-radius: 16px;
+        --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .gallery::part(backdrop) {
+        background: rgba(209, 213, 219);
+        opacity: 1;
+    }
+
+    .gallery ion-toolbar {
+        --background: rgb(14 116 144);
+        --color: white;
+    }
+
+
+    /* Share Modal */
+    .share {
+        --height: 30%;
+        --border-radius: 16px;
+        --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    .share::part(backdrop) {
+        background: rgba(209, 213, 219);
+        opacity: 1;
+    }
+
+    .share ion-toolbar {
+        --background: rgb(14 116 144);
+        --color: white;
+    }
+
+
+    a {
+        text-decoration: none !important;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <ion-content class="body">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-md="3" offset-md="4.5">
+                    <!-- Header -->
+
+                    
+                    <div class="topbar">
+                        
+
+                                                    
+                    <ion-card>
+            <img class="bannerimg" src="https://i.ibb.co/0rW5xy4/2023-03-7.jpg" />
+
+                        
+                <img class="profileimg" src="https://i.ibb.co/YDFpyrC/oo.jpg" />
+                <ion-card-header>
+
+        <ion-card-title id="name">
+            Pankaj Jaiswal        </ion-card-title>
+
+                <ion-card-subtitle id="designation">
+            Owner        </ion-card-subtitle>
+            </ion-card-header>
+  
+
+    <ion-card-content>
+                <p class="company">
+                    A COMPLETE RANGE OF DIGITAL ELETRONIC        </p>
+            </ion-card-content>
+
+    <h3 class="downloadcontact">
+        <a href="https://my.unogreen.in/vcard_download/XP3JZM">
+            <ion-icon name="bookmark-outline"></ion-icon> &nbsp; Save Contact
+        </a>
+    </h3>
+  </ion-card>
+
+                    <div class="social">
+                                                <a href="https://www.facebook.com/pankaj.jaiswal.14855377?mibextid=ZbWKwL" target="_blank"><img class="icon"
+                                src="https://my.unogreen.in/new_assests//images/social/fb.png" alt=""></a>
+                        
+                                                <a href="https://www.instagram.com/music_.hut/" target="_blank"><img class="icon"
+                                src="https://my.unogreen.in/new_assests//images/social/ig.png" alt=""></a>
+                        
+                        
+
+                        <!-- <a href="https://twitter.com/" target="_blank"><img class="icon"
+                                src="https://my.unogreen.in/new_assests//images/social/tt.png" alt=""></a> -->
+
+                        
+                        
+                        
+                                                <a href="sms:+919334205536" target="_blank"><img class="icon"
+                                src="https://my.unogreen.in/new_assests//images/social/textmsg.png" alt=""></a>
+                        
+                                                <a href="https://wa.me/+919334205536" target="_blank"><img class="icon"
+                                src="https://my.unogreen.in/new_assests//images/social/wa.png" alt=""></a>
+                                            </div>
+
+                    <div class="personal">
+                        <ion-row Class="ProfileIcons">
+                            <ion-col>
+                                <a href="tel:+919334205536">
+                                    <img style="border-radius: 10px;"
+                                        src="https://my.unogreen.in/new_assests//images/Personal/phone.png" alt=""
+                                        height="90px">
+                                </a><br>
+                                Call
+                            </ion-col>
+
+
+                            <ion-col>
+                                <a href="tel:+917319729895">
+                                    <img style="border-radius: 10px;"
+                                        src="https://my.unogreen.in/new_assests//images/Personal/alt_number.png"
+                                        alt="" height="90px">
+                                </a><br>
+                                Alt. Number
+                            </ion-col>
+
+                            <ion-col>
+                                <a href="mailto:freefire12891010@gmail.com">
+                                    <img style="border-radius: 10px;"
+                                        src="https://my.unogreen.in/new_assests//images/Personal/email.png" alt=""
+                                        height="90px">
+                                </a><br>
+                                Email
+                            </ion-col>
+
+                            <ion-col>
+                                <a href="https://musichutpatna.fwscart.com/" target="_blank">
+                                    <img style="border-radius: 10px;"
+                                        src="https://my.unogreen.in/new_assests//images/Personal/website.png" alt=""
+                                        height="90px">
+                                </a><br>
+                                Website
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-row>
+                            <ion-col>
+                                <a href="https://www.google.com/maps/dir/25.6158648,85.1493401/music+hut+patna/@25.615917,85.1467545,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x39ed58f7b817f2c3:0xc8c7af06b7db538e!2m2!1d85.1492631!2d25.615976?entry=ttu" target="_blank">
+                                    <img style="border-radius: 10px;"
+                                        src="https://my.unogreen.in/new_assests//images/Personal/location.png" alt=""
+                                        height="90px">
+                                </a><br>
+                                Location
+                            </ion-col>
+
+                            <ion-col>
+                                <img id="About-Us" expand="block" style="border-radius: 10px;"
+                                    src="https://my.unogreen.in/new_assests//images/Personal/About-us.png" alt=""
+                                    height="90px"><br>
+                                About
+                            </ion-col>
+
+                            <ion-col>
+                                <img id="gallery" expand="block" tyle="border-radius: 10px;"
+                                    src="https://my.unogreen.in/new_assests//images/Personal/Gallery.png" alt=""
+                                    height="90px"><br>
+                                Gallery
+                            </ion-col>
+
+                            <ion-col>
+                                <img id="payment" style="border-radius: 10px;" expand="block"
+                                    src="https://my.unogreen.in/new_assests//images/Personal/pay.png" alt=""
+                                    height="90px"><br>
+                                Payment
+                            </ion-col>
+                        </ion-row>
+
+
+
+
+
+                        <ion-modal class="gallery" trigger="gallery">
+                            <div style="overflow-y: scroll;">
+                                                                <ion-card class="selector">
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            Catalogue
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <ion-card-content>
+                                        <a href="C:\Users\user\Desktop\html\PROEX HT 2021.pdf"
+                                            target="_blank">
+                                            <ion-button expand="block" style="--background: #DBF209;">
+                                                <ion-icon name="cloud-download-outline"></ion-icon> &nbsp;
+                                                Download Now
+                                            </ion-button>
+                                        </a>
+                                    </ion-card-content>
+                                </ion-card>
+                                
+                                <ion-card>
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            Gallery
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <ion-card-content>
+                                                                                <img src="https://i.ibb.co/Nr9Mn62/collage.png" height="350" width="350"
+                                            class="gallery-img">
+                                                                                                                        <img src="https://i.ibb.co/5KvrK47/sfd.jpg"height="350" width="350"
+                                            class="gallery-img">
+                                                                                                                        <img src="https://i.ibb.co/Gtn7Z5t/sf.jpg"height="350" width="350"
+                                            class="gallery-img">
+                                                                                                                        <img src="https://i.ibb.co/0rW5xy4/2023-03-7.jpg" height="350" width="350"
+                                            class="gallery-img">
+                                                                                                                    </ion-card-content>
+                                </ion-card>
+                            </div>
+                        </ion-modal>
+
+
+
+
+
+
+                        <ion-modal class="about" trigger="About-Us">
+                            <div style="overflow-y: scroll;">
+                                                                <ion-card class="selector">
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            About Us
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <ion-card-content>
+                                        <ion-grid>
+                                                                                        <ion-row>
+                                                <ion-col size="4">
+                                                    GSTIN No.
+                                                </ion-col>
+                                                <ion-col size="1">
+                                                    :
+                                                </ion-col>
+                                                <ion-col size="7">
+                                                    10ACRPJ4735C1ZY                                                </ion-col>
+                                            </ion-row>
+                                            <br>
+                                            
+                                                                                        <ion-row>
+                                                <ion-col size="4">
+                                                    PAN No.
+                                                </ion-col>
+                                                <ion-col size="1">
+                                                    :
+                                                </ion-col>
+                                                <ion-col size="7">
+                                                    ######                                                </ion-col>
+                                            </ion-row>
+                                            <br>
+                                            
+                                                                                        <ion-row>
+                                                <ion-col size="4">
+                                                    Address
+                                                </ion-col>
+                                                <ion-col size="1">
+                                                    :
+                                                </ion-col>
+                                                <ion-col size="7">
+                                                    Jaiswal Market, Gola Rd, Bakarganj, Patna, Bihar                                                 </ion-col>
+                                            </ion-row>
+                                            <br>
+                                            
+                                                                                        <ion-row>
+                                                <ion-col size="4">
+                                                    Zip Code
+                                                </ion-col>
+                                                <ion-col size="1">
+                                                    :
+                                                </ion-col>
+                                                <ion-col size="7">
+                                                    800004                                                </ion-col>
+                                            </ion-row>
+                                                                                    </ion-grid>
+                                    </ion-card-content>
+                                </ion-card>
+                                
+                                                                <ion-card class="selector">
+                                    <ion-card-content>
+                                        <ion-card-header>
+                                            <ion-card-title>
+                                                Description
+                                            </ion-card-title>
+                                        </ion-card-header>
+                                        Welcome to MUSIC HUT PATNA
+
+WE have are own offline showroom 
+in Patna........
+How to order product online:
+1)Go to https://musichutpatna.fwscart.com/
+2)Choose your category
+3)then choose sub catagory
+4)select product
+5)enter quantity
+6)then go to add to cart
+7)select payment method 
+8)click buy button
+as soon as you click on buy button your order will reach under 5 days ..!
+How to Order Product From Offline Store:
+1)call on 91+9334205536
+2)tell what you want and payment method.....!!!
+Then your oder will reach under 2-3 days....
+Thank you!!
+regards
+Music Hut Patna                                    </ion-card-content>
+
+                                </ion-card>
+                                                            </div>
+                        </ion-modal>
+
+
+
+
+
+                        <ion-modal class="payment" trigger="payment">
+                            <div style="overflow-y: scroll;">
+                                                                <ion-card class="selector">
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            QR Code
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <img src="https://i.ibb.co/qMThDjB/gp-qr.jpg" height="300" width="300">
+                                    
+                                </ion-card>
+                                
+                                                                <ion-card class="selector">
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            Bank Details
+                                        </ion-card-title>
+                                    </ion-card-header>
+                                    <ion-grid>
+                                        <ion-row>
+                                            <ion-col size="4">
+                                                Bank Name
+                                            </ion-col>
+                                            <ion-col size="1">
+                                                :
+                                            </ion-col>
+                                            <ion-col size="7">
+                                                Bank Of Baroda                                             </ion-col>
+                                        </ion-row>
+                                        <br>
+                                        <ion-row>
+                                            <ion-col size="4">
+                                                Account Name
+                                            </ion-col>
+                                            <ion-col size="1">
+                                                :
+                                            </ion-col>
+                                            <ion-col size="7">
+                                                Music Hut                                            </ion-col>
+                                        </ion-row>
+                                        <br>
+                                        <ion-row>
+                                            <ion-col size="4">
+                                                Account No.
+                                            </ion-col>
+                                            <ion-col size="1">
+                                                :
+                                            </ion-col>
+                                            <ion-col size="7">
+                                                35040500000073                                            </ion-col>
+                                        </ion-row>
+                                        <br>
+                                        <ion-row>
+                                            <ion-col size="4">
+                                                IFSC Code
+                                            </ion-col>
+                                            <ion-col size="1">
+                                                :
+                                            </ion-col>
+                                            <ion-col size="7">
+                                                BARB0RAJEND                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </ion-card>
+                                <br>
+                                
+                                                                <ion-card>
+                                    <ion-card-header>
+                                        <ion-card-title>
+                                            Other Options
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <ion-row>
+
+                                                                                <ion-col style="text-align:center;" size="6"><img style="vertical-align:middle;"
+                                                src="https://my.unogreen.in/new_assests/assets/Images/payment/newGoogle-pay.png"
+                                                height="150px" width="150px">
+                                            <p>
+                                                musichut@bob                                            </p>
+                                        </ion-col>
+                                        
+                                                                                <ion-col style="text-align:center;" size="6"><img style="vertical-align:middle;"
+                                                src="https://my.unogreen.in/new_assests/assets/Images/payment/newPhonepe.png"
+                                                height="150px" width="150px">
+                                            <p style="text-align:center;">
+                                                musichut@bob                                            </p>
+                                        </ion-col>
+                                        
+                                                                                <ion-col style="text-align:center;" size="6"><img style="vertical-align:middle;"
+                                                src="https://my.unogreen.in/new_assests/assets/Images/payment/newPaytm.png"
+                                                height="150px" width="150px">
+                                            <p style="text-align:center;">
+                                                musichut@bob                                             </p>
+                                        </ion-col>
+                                        
+                                                                                <ion-col style="text-align:center;" size="6"><img style="vertical-align:middle;"
+                                                src="https://my.unogreen.in/new_assests/assets/Images/payment/newBhim.png"
+                                                height="150px" width="150px">
+                                            <p style="text-align:center;">
+                                                musichut@bob                                             </p>
+                                        </ion-col>
+                                                                            </ion-row>
+                                </ion-card>
+                                                            </div>
+                        </ion-modal>
+                    </div>
+
+                    <!-- Footer -->
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+    <script>
+        function designation() {
+            // Get the value of the input field with id="designation" and display it in capital letters
+            var x = document.getElementById("designation").value;
+            document.getElementById("designation").value = x.toUpperCase();
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "https://my.unogreen.in/Home/visitor_count",
+                data: 'user_id=' + ' 60254',
+                success: function () {
+
+                }
+            });
+        });
+    </script>
+    
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en'
+    }, 'google_translate_element');
+  }
+</script>
+</body>
+
+</html>
